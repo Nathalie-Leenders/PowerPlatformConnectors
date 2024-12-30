@@ -2,13 +2,13 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
+    "title": "Github Data",
+    "description": "To use the files on your github repo as a datasource, for example if your website is hosted on github. Not to be confused with the other Github connector that focuses on the PR's.",
     "contact": {
       "name": "Nathalie Leenders",
       "url": "https://www.nathalieleenders.com",
       "email": "info@nathalieleenders.com"
-    },
-    "title": "Github Data",
-    "description": "To use the files on your github repo as a datasource, for example if your website is hosted on github. Not to be confused with the other Github connector that focuses on the PR's."
+    }
   },
   "host": "raw.githubusercontent.com",
   "basePath": "/",
@@ -29,6 +29,38 @@
             "type": "string",
             "x-ms-summary": "Github name",
             "description": "The name of the Github user"
+          },
+          {
+            "name": "Reponame",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "x-ms-summary": "Repository name",
+            "description": "The name of the Github repository"
+          },
+          {
+            "name": "Foldername",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "x-ms-summary": "Folder name",
+            "description": "The name of the folder in the repository"
+          },
+          {
+            "name": "Foldername2",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "x-ms-summary": "Subfolder name",
+            "description": "The name of the subfolder in the repository"
+          },
+          {
+            "name": "Markdownfile",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "x-ms-summary": "Markdown file",
+            "description": "The name of the markdown file"
           }
         ],
         "responses": {
@@ -37,19 +69,15 @@
             "schema": {
               "type": "string"
             }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "429": {
+            "description": "Service limit exhausted. Please contact your team admin."
           }
         }
       }
     }
-  },
-  "x-ms-connector-metadata": [
-    {
-      "propertyName": "Publisher",
-      "propertyValue": "GitHub, Inc."
-    },
-    {
-      "propertyName": "StackOwner",
-      "propertyValue": "GitHub, Inc."
-    }
-  ]
+  }
 }
